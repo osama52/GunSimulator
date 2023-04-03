@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
                 {
                     if (Time.time > coolTime && amo > 0)
                     {
-                        Handheld.Vibrate();
+                        //Handheld.Vibrate();
                         currentModel.transform.GetChild(0).GetComponent<ParticleSystem>().Stop();
                         currentModel.transform.GetChild(0).GetComponent<ParticleSystem>().Play();
                         currentModel.GetComponent<AudioSource>().Play();
@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
                     //Auto
                     if (Time.time > coolTime && amo > 0)
                     {
-                        Handheld.Vibrate();
+                        //Handheld.Vibrate();
                         currentModel.transform.GetChild(0).GetComponent<ParticleSystem>().Stop();
                         currentModel.transform.GetChild(0).GetComponent<ParticleSystem>().Play();
                         currentModel.GetComponent<AudioSource>().Play();
@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour
                     {
                         hasShaken = true;
                         Debug.Log("Device is shaking!");
-                        Handheld.Vibrate();
+                        //Handheld.Vibrate();
                         currentModel.transform.GetChild(0).GetComponent<ParticleSystem>().Stop();
                         currentModel.transform.GetChild(0).GetComponent<ParticleSystem>().Play();
                         currentModel.GetComponent<AudioSource>().Play();
@@ -137,7 +137,7 @@ public class GameManager : MonoBehaviour
         {
             if(Time.time > coolTime && amo>0)
             {
-                Handheld.Vibrate();
+                //Handheld.Vibrate();
                 currentModel.transform.GetChild(0).GetComponent<ParticleSystem>().Stop();
                 currentModel.transform.GetChild(0).GetComponent<ParticleSystem>().Play();
                 currentModel.GetComponent<AudioSource>().Play();
