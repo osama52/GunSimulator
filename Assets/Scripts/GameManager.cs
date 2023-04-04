@@ -267,10 +267,98 @@ public class GameManager : MonoBehaviour
     public void G7()
     {
         currentModel = Instantiate(GunModels[7]);
-        currentModel.transform.position = new Vector3(0.3f, -1f, 0f);
+        currentModel.transform.position = new Vector3(-0.1f, -0.5f, 0f);
         currentModel.transform.rotation = Quaternion.Euler(0, 180, 90);
-        currentModel.transform.localScale = Vector3.one * 3f;
+        currentModel.transform.localScale = Vector3.one * 4f;
         single = false;
+        collectionPanel.SetActive(false);
+        r = 30;
+        amo = r;
+    }
+    public void G8()
+    {
+        currentModel = Instantiate(GunModels[8]);
+        currentModel.transform.position = new Vector3(-0.1f, 0f, 0f);
+        currentModel.transform.rotation = Quaternion.Euler(0, 180, 90);
+        currentModel.transform.localScale = Vector3.one * 4f;
+        single = true;
+        collectionPanel.SetActive(false);
+        r = 30;
+        amo = r;
+    }
+    public void G9()
+    {
+        currentModel = Instantiate(GunModels[9]);
+        currentModel.transform.position = new Vector3(-0.1f, -0.5f, 0f);
+        currentModel.transform.rotation = Quaternion.Euler(0, 180, 90);
+        currentModel.transform.localScale = Vector3.one * 3.5f;
+        single = true;
+        collectionPanel.SetActive(false);
+        r = 30;
+        amo = r;
+    }
+    public void G10()
+    {
+        currentModel = Instantiate(GunModels[10]);
+        currentModel.transform.position = new Vector3(-0.1f, -0.5f, 0f);
+        currentModel.transform.rotation = Quaternion.Euler(0, 180, 90);
+        currentModel.transform.localScale = Vector3.one * 4f;
+        single = false;
+        collectionPanel.SetActive(false);
+        r = 30;
+        amo = r;
+    }
+    public void G11()
+    {
+        currentModel = Instantiate(GunModels[11]);
+        currentModel.transform.position = new Vector3(-0.1f, 0f, 0f);
+        currentModel.transform.rotation = Quaternion.Euler(0, 180, 90);
+        currentModel.transform.localScale = Vector3.one * 4f;
+        single = false;
+        collectionPanel.SetActive(false);
+        r = 30;
+        amo = r;
+    }
+    public void G12()
+    {
+        currentModel = Instantiate(GunModels[12]);
+        currentModel.transform.position = new Vector3(0f, 0f, 0f);
+        currentModel.transform.rotation = Quaternion.Euler(0, 180, 90);
+        currentModel.transform.localScale = Vector3.one * 0.6f;
+        single = true;
+        collectionPanel.SetActive(false);
+        r = 6;
+        amo = r;
+    }
+    public void G13()
+    {
+        currentModel = Instantiate(GunModels[13]);
+        currentModel.transform.position = new Vector3(-0.2f, 0.2f, 0f);
+        currentModel.transform.rotation = Quaternion.Euler(0, 180, 90);
+        currentModel.transform.localScale = Vector3.one * 0.6f;
+        single = true;
+        collectionPanel.SetActive(false);
+        r = 6;
+        amo = r;
+    }
+    public void G14()
+    {
+        currentModel = Instantiate(GunModels[14]);
+        currentModel.transform.position = new Vector3(-0.2f, 0.2f, 0f);
+        currentModel.transform.rotation = Quaternion.Euler(0, 180, 90);
+        currentModel.transform.localScale = Vector3.one * 0.8f;
+        single = false;
+        collectionPanel.SetActive(false);
+        r = 30;
+        amo = r;
+    }
+    public void G15()
+    {
+        currentModel = Instantiate(GunModels[15]);
+        currentModel.transform.position = new Vector3(-0.2f, 0.2f, 0f);
+        currentModel.transform.rotation = Quaternion.Euler(0, 180, 90);
+        currentModel.transform.localScale = Vector3.one * 1.3f;
+        single = true;
         collectionPanel.SetActive(false);
         r = 30;
         amo = r;
