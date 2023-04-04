@@ -360,7 +360,62 @@ public class GameManager : MonoBehaviour
         currentModel.transform.localScale = Vector3.one * 1.3f;
         single = true;
         collectionPanel.SetActive(false);
+        r = 10;
+        amo = r;
+    }
+    public void G16()
+    {
+        currentModel = Instantiate(GunModels[16]);
+        currentModel.transform.position = new Vector3(-0.1f, 0.2f, 0f);
+        currentModel.transform.rotation = Quaternion.Euler(0, 180, 90);
+        currentModel.transform.localScale = Vector3.one * 4.5f;
+        single = true;
+        collectionPanel.SetActive(false);
+        r = 8;
+        amo = r;
+    }
+    public void G17()
+    {
+        currentModel = Instantiate(GunModels[17]);
+        currentModel.transform.position = new Vector3(-0.1f, 0.1f, 0f);
+        currentModel.transform.rotation = Quaternion.Euler(0, 180, 90);
+        currentModel.transform.localScale = Vector3.one * 1.1f;
+        single = false;
+        collectionPanel.SetActive(false);
         r = 30;
+        amo = r;
+    }
+    public void G18()
+    {
+        currentModel = Instantiate(GunModels[18]);
+        currentModel.transform.position = new Vector3(-0.3f, 0.2f, 0f);
+        currentModel.transform.rotation = Quaternion.Euler(0, 180, 90);
+        currentModel.transform.localScale = Vector3.one * 5.5f;
+        single = false;
+        collectionPanel.SetActive(false);
+        r = 30;
+        amo = r;
+    }
+    public void G19()
+    {
+        currentModel = Instantiate(GunModels[19]);
+        currentModel.transform.position = new Vector3(-0.3f, 0f, 0f);
+        currentModel.transform.rotation = Quaternion.Euler(0, 180, 90);
+        currentModel.transform.localScale = Vector3.one * -0.03f;
+        single = false;
+        collectionPanel.SetActive(false);
+        r = 30;
+        amo = r;
+    }
+    public void G20()
+    {
+        currentModel = Instantiate(GunModels[20]);
+        currentModel.transform.position = new Vector3(0.1f, 0f, 0f);
+        currentModel.transform.rotation = Quaternion.Euler(0, 180, 90);
+        currentModel.transform.localScale = Vector3.one * 4f;
+        single = false;
+        collectionPanel.SetActive(false);
+        r = 10;
         amo = r;
     }
 }
