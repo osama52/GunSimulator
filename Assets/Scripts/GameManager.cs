@@ -261,7 +261,18 @@ public class GameManager : MonoBehaviour
         currentModel.transform.localScale = Vector3.one * 3f;
         single = true;
         collectionPanel.SetActive(false);
-        r = 10;
+        r = 6;
+        amo = r;
+    }
+    public void G7()
+    {
+        currentModel = Instantiate(GunModels[7]);
+        currentModel.transform.position = new Vector3(0.3f, -1f, 0f);
+        currentModel.transform.rotation = Quaternion.Euler(0, 180, 90);
+        currentModel.transform.localScale = Vector3.one * 3f;
+        single = false;
+        collectionPanel.SetActive(false);
+        r = 30;
         amo = r;
     }
 }
