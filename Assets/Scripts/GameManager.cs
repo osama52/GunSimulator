@@ -186,6 +186,7 @@ public class GameManager : MonoBehaviour
     public void Reload()
     {
         amo = r;
+        currentModel.GetComponent<Animator>().Play("Reload");
     }
     public void G0()
     {
