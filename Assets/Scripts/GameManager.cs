@@ -12,7 +12,8 @@ public class GameManager : MonoBehaviour
     public  List<GameObject> GunModels;
     public GameObject collectionPanel;
     public GameObject gunDisplayPanel;
-    public TextMeshProUGUI amoText;
+    public GameObject settingPanel;
+    public Text amoText;
     public Toggle Hide;
     public Toggle Hold;
     public Toggle Single;
@@ -40,6 +41,15 @@ public class GameManager : MonoBehaviour
         
         yield return new WaitForSeconds(0.2f);
         //CameraDevice.Instance.SetFlashTorchMode(false);
+    }
+
+    public void openSettings()
+    {
+        settingPanel.SetActive(true);
+    }
+    public void closeSettings()
+    {
+        settingPanel.SetActive(false);
     }
     private void Update()
     {
