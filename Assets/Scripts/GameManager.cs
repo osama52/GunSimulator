@@ -1,10 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Experimental;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,11 +27,20 @@ public class GameManager : MonoBehaviour
 
     int amo = 10;
     int r;
+
+
+    int reloadCount;
     private void Awake()
     {
         instance= this;
     }
-
+    private IEnumerator BlinkTorch()
+    {
+        //CameraDevice.Instance.SetFlashTorchMode(true);
+        
+        yield return new WaitForSeconds(0.2f);
+        //CameraDevice.Instance.SetFlashTorchMode(false);
+    }
     private void Update()
     {
         amoText.text = amo.ToString();
@@ -44,13 +52,15 @@ public class GameManager : MonoBehaviour
                 {
                     if (Time.time > coolTime && amo > 0)
                     {
-                        //Handheld.Vibrate();
+                        Vibration.Vibrate(200);
+                        StartCoroutine(BlinkTorch());
                         currentModel.transform.GetChild(0).GetComponent<ParticleSystem>().Stop();
                         currentModel.transform.GetChild(0).GetComponent<ParticleSystem>().Play();
                         currentModel.GetComponent<AudioSource>().Play();
                         currentModel.GetComponent<Animator>().Play("Shoot");
                         coolTime = Time.time + 0.5f;
                         amo--;
+
                     }
                 }
                 else
@@ -58,7 +68,8 @@ public class GameManager : MonoBehaviour
                     //Auto
                     if (Time.time > coolTime && amo > 0)
                     {
-                        //Handheld.Vibrate();
+                        Vibration.Vibrate(200);
+                        StartCoroutine(BlinkTorch());
                         currentModel.transform.GetChild(0).GetComponent<ParticleSystem>().Stop();
                         currentModel.transform.GetChild(0).GetComponent<ParticleSystem>().Play();
                         currentModel.GetComponent<AudioSource>().Play();
@@ -84,7 +95,8 @@ public class GameManager : MonoBehaviour
                     {
                         hasShaken = true;
                         Debug.Log("Device is shaking!");
-                        //Handheld.Vibrate();
+                        Vibration.Vibrate(200);
+                        StartCoroutine(BlinkTorch());
                         currentModel.transform.GetChild(0).GetComponent<ParticleSystem>().Stop();
                         currentModel.transform.GetChild(0).GetComponent<ParticleSystem>().Play();
                         currentModel.GetComponent<AudioSource>().Play();
@@ -105,6 +117,27 @@ public class GameManager : MonoBehaviour
             }
             lastAcceleration = acceleration;
         }
+    }
+    public void SingleFire()
+    {
+      
+        if(Single.isOn)
+        {
+            if(Time.time > coolTime && amo>0)
+            {
+                Vibration.Vibrate(200);
+                StartCoroutine(BlinkTorch());
+                currentModel.transform.GetChild(0).GetComponent<ParticleSystem>().Stop();
+                currentModel.transform.GetChild(0).GetComponent<ParticleSystem>().Play();
+                currentModel.GetComponent<AudioSource>().Play();
+                currentModel.GetComponent<Animator>().Play("Shoot");
+                currentModel.GetComponent<Animator>().Play("Shoot");
+                coolTime=Time.time+0.5f;
+                amo--;
+            }
+           
+        }
+       
     }
     public void OpenCollectionPanel()
     {
@@ -127,26 +160,6 @@ public class GameManager : MonoBehaviour
             gunDisplayPanel.transform.GetChild(2).gameObject.SetActive(true);
             gunDisplayPanel.transform.GetChild(3).gameObject.SetActive(true);
             gunDisplayPanel.transform.GetChild(4).gameObject.SetActive(true);
-        }
-       
-    }
-    public void SingleFire()
-    {
-      
-        if(Single.isOn)
-        {
-            if(Time.time > coolTime && amo>0)
-            {
-                //Handheld.Vibrate();
-                currentModel.transform.GetChild(0).GetComponent<ParticleSystem>().Stop();
-                currentModel.transform.GetChild(0).GetComponent<ParticleSystem>().Play();
-                currentModel.GetComponent<AudioSource>().Play();
-                currentModel.GetComponent<Animator>().Play("Shoot");
-                currentModel.GetComponent<Animator>().Play("Shoot");
-                coolTime=Time.time+0.5f;
-                amo--;
-            }
-           
         }
        
     }
@@ -185,8 +198,16 @@ public class GameManager : MonoBehaviour
     }
     public void Reload()
     {
-        amo = r;
-        currentModel.GetComponent<Animator>().Play("Reload");
+        if(amo<=0)
+        {
+            amo = r;
+            currentModel.GetComponent<Animator>().Play("Reload");
+            reloadCount++;
+            if(reloadCount%3==0)
+            {
+                AdManager_Admob.instance.ShowInterstitialAd();
+            }
+        }   
     }
     public void G0()
     {
