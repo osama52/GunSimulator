@@ -14,6 +14,10 @@ public class GameManager : MonoBehaviour
     public GameObject gunDisplayPanel;
     public GameObject settingPanel;
     public GameObject Content;
+    public GameObject ReloadBtn;
+    public GameObject StartPanel;
+    public GameObject ClassicCollection;
+    public GameObject SciFiCollection;
     public Text amoText;
     public Toggle Hide;
     public Toggle Hold;
@@ -37,6 +41,22 @@ public class GameManager : MonoBehaviour
 
     int reloadCount;
 
+    public void OpenClassic()
+    {
+        StartPanel.SetActive(false);
+        ClassicCollection.SetActive(true);
+        SciFiCollection.SetActive(false);
+    }
+    public void OpenSciFi()
+    {
+        StartPanel.SetActive(false);
+        ClassicCollection.SetActive(false);
+        SciFiCollection.SetActive(true);
+    }
+    public void Home()
+    {
+        StartPanel.SetActive(true);
+    }
     public void Sound()
     {
         sound=!sound;
@@ -93,28 +113,34 @@ public class GameManager : MonoBehaviour
         if(PlayerPrefs.GetInt("Sound", 0)==0)
         {
             settingPanel.transform.GetChild(0).transform.GetChild(1).gameObject.SetActive(false);
+            sound= true;
         }
         else
         {
             settingPanel.transform.GetChild(0).transform.GetChild(1).gameObject.SetActive(true);
+            sound= false;
         }
 
         if (PlayerPrefs.GetInt("Vibrate", 0) == 0)
         {
             settingPanel.transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(false);
+            vibrate=true;
         }
         else
         {
             settingPanel.transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(true);
+            vibrate=false;
         }
 
         if (PlayerPrefs.GetInt("Flash", 0) == 0)
         {
             settingPanel.transform.GetChild(2).transform.GetChild(1).gameObject.SetActive(false);
+            flash=true;
         }
         else
         {
             settingPanel.transform.GetChild(2).transform.GetChild(1).gameObject.SetActive(true);
+            flash=false;
         }
 
         if (PlayerPrefs.GetInt("G5", 0) == 1)
@@ -194,6 +220,15 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+
+        if(amo<=0)
+        {
+            ReloadBtn.SetActive(true);
+        }
+        else
+        {
+            ReloadBtn.SetActive(false);
+        }
         amoText.text = amo.ToString();
         if (Hold.isOn)
         {
@@ -336,17 +371,19 @@ public class GameManager : MonoBehaviour
     {
         if(Hide.isOn)
         {
-            gunDisplayPanel.transform.GetChild(1).gameObject.SetActive(false);
             gunDisplayPanel.transform.GetChild(2).gameObject.SetActive(false);
             gunDisplayPanel.transform.GetChild(3).gameObject.SetActive(false);
             gunDisplayPanel.transform.GetChild(4).gameObject.SetActive(false);
+            gunDisplayPanel.transform.GetChild(5).gameObject.SetActive(false);
+            gunDisplayPanel.transform.GetChild(6).gameObject.SetActive(false);
         }
         else
         {
-            gunDisplayPanel.transform.GetChild(1).gameObject.SetActive(true);
             gunDisplayPanel.transform.GetChild(2).gameObject.SetActive(true);
             gunDisplayPanel.transform.GetChild(3).gameObject.SetActive(true);
             gunDisplayPanel.transform.GetChild(4).gameObject.SetActive(true);
+            gunDisplayPanel.transform.GetChild(5).gameObject.SetActive(true);
+            gunDisplayPanel.transform.GetChild(6).gameObject.SetActive(true);
         }
        
     }
