@@ -68434,10 +68434,10 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b08f3f1752551d5428b9818bee55800f, type: 2}
-  - {fileID: 2100000, guid: 8fca9938b52a5a5489b13aa534c39f49, type: 2}
-  - {fileID: 2100000, guid: 0e0d5566fa754f84c95c337f5b7a2ba1, type: 2}
-  - {fileID: 2100000, guid: 91e61bbc12841d44fb60909f7ca52bc0, type: 2}
+  - {fileID: 2100000, guid: 7e607940c8f5b954ab5bab8e23811b00, type: 2}
+  - {fileID: 2100000, guid: 7e607940c8f5b954ab5bab8e23811b00, type: 2}
+  - {fileID: 2100000, guid: 7e607940c8f5b954ab5bab8e23811b00, type: 2}
+  - {fileID: 2100000, guid: 7e607940c8f5b954ab5bab8e23811b00, type: 2}
   - {fileID: 2100000, guid: 959cf3b72bff4db4e8e7041bc92618c9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -83345,9 +83345,9 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 0e0d5566fa754f84c95c337f5b7a2ba1, type: 2}
-  - {fileID: 2100000, guid: 8fca9938b52a5a5489b13aa534c39f49, type: 2}
-  - {fileID: 2100000, guid: 91e61bbc12841d44fb60909f7ca52bc0, type: 2}
-  - {fileID: 2100000, guid: b08f3f1752551d5428b9818bee55800f, type: 2}
+  - {fileID: 2100000, guid: 7e607940c8f5b954ab5bab8e23811b00, type: 2}
+  - {fileID: 2100000, guid: 7e607940c8f5b954ab5bab8e23811b00, type: 2}
+  - {fileID: 2100000, guid: 7e607940c8f5b954ab5bab8e23811b00, type: 2}
   - {fileID: 2100000, guid: cbb2d68c3a497124e91b7db68be98abe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -93397,9 +93397,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b08f3f1752551d5428b9818bee55800f, type: 2}
   - {fileID: 2100000, guid: 0e0d5566fa754f84c95c337f5b7a2ba1, type: 2}
-  - {fileID: 2100000, guid: 8fca9938b52a5a5489b13aa534c39f49, type: 2}
+  - {fileID: 2100000, guid: 0e0d5566fa754f84c95c337f5b7a2ba1, type: 2}
+  - {fileID: 2100000, guid: 7e607940c8f5b954ab5bab8e23811b00, type: 2}
   - {fileID: 2100000, guid: cbb2d68c3a497124e91b7db68be98abe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0

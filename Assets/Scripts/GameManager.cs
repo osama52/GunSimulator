@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public GameObject collectionPanel;
     public GameObject gunDisplayPanel;
     public GameObject settingPanel;
+    public GameObject Content;
     public Text amoText;
     public Toggle Hide;
     public Toggle Hold;
@@ -35,12 +36,33 @@ public class GameManager : MonoBehaviour
     {
         instance= this;
     }
+    public AndroidJavaClass javaObject;
+    void Start()
+    {
+        javaObject = new AndroidJavaClass("com.myflashlight.flashlightlib.Flashlight");
+    }
+
+    public void TurnOn()
+    {
+        javaObject.CallStatic("on", GetUnityActivity());
+    }
+
+    public void TurnOff()
+    {
+        javaObject.CallStatic("off", GetUnityActivity());
+    }
+    AndroidJavaObject GetUnityActivity()
+    {
+        using (var unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
+        {
+            return unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
+        }
+    }
     private IEnumerator BlinkTorch()
     {
-        //CameraDevice.Instance.SetFlashTorchMode(true);
-        
+        TurnOn();
         yield return new WaitForSeconds(0.2f);
-        //CameraDevice.Instance.SetFlashTorchMode(false);
+        TurnOff();
     }
 
     public void openSettings()
@@ -276,14 +298,25 @@ public class GameManager : MonoBehaviour
     }
     public void G5()
     {
-        currentModel = Instantiate(GunModels[5]);
-        currentModel.transform.position = new Vector3(0.05f, 0f, 0f);
-        currentModel.transform.rotation = Quaternion.Euler(0, 180, 90);
-        currentModel.transform.localScale = Vector3.one * 3.5f;
-        single = true;
-        collectionPanel.SetActive(false);
-        r = 10;
-        amo = r;
+        if(PlayerPrefs.GetInt("G5",0)==1)
+        {
+            currentModel = Instantiate(GunModels[5]);
+            currentModel.transform.position = new Vector3(0.05f, 0f, 0f);
+            currentModel.transform.rotation = Quaternion.Euler(0, 180, 90);
+            currentModel.transform.localScale = Vector3.one * 3.5f;
+            single = true;
+            collectionPanel.SetActive(false);
+            r = 10;
+            amo = r;
+        }
+        else
+        {
+            AdManager_Admob.instance.ShowRewardedVideoAd();
+            Content.transform.GetChild(5).GetChild(1).gameObject.SetActive(true);
+            Content.transform.GetChild(5).GetChild(2).gameObject.SetActive(true);
+            Content.transform.GetChild(5).GetChild(3).gameObject.SetActive(false);
+            PlayerPrefs.SetInt("G5", 1);
+        }
     }
     public void G6()
     {
