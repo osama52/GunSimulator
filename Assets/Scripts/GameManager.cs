@@ -14,10 +14,13 @@ public class GameManager : MonoBehaviour
     public GameObject gunDisplayPanel;
     public GameObject settingPanel;
     public GameObject Content;
+    public GameObject ClassicContent;
+    public GameObject SciFiContent;
     public GameObject ReloadBtn;
     public GameObject StartPanel;
     public GameObject ClassicCollection;
     public GameObject SciFiCollection;
+    public GameObject BG;
     public Text amoText;
     public Toggle Hide;
     public Toggle Hold;
@@ -46,12 +49,14 @@ public class GameManager : MonoBehaviour
         StartPanel.SetActive(false);
         ClassicCollection.SetActive(true);
         SciFiCollection.SetActive(false);
+        Content = ClassicContent;
     }
     public void OpenSciFi()
     {
         StartPanel.SetActive(false);
         ClassicCollection.SetActive(false);
         SciFiCollection.SetActive(true);
+        Content= SciFiContent;
     }
     public void Home()
     {
@@ -145,45 +150,51 @@ public class GameManager : MonoBehaviour
 
         if (PlayerPrefs.GetInt("G5", 0) == 1)
         {
-            Content.transform.GetChild(5).GetChild(1).gameObject.SetActive(true);
-            Content.transform.GetChild(5).GetChild(2).gameObject.SetActive(true);
-            Content.transform.GetChild(5).GetChild(3).gameObject.SetActive(false);
+            SciFiContent.transform.GetChild(5).GetChild(1).gameObject.SetActive(true);
+            SciFiContent.transform.GetChild(5).GetChild(2).gameObject.SetActive(true);
+            SciFiContent.transform.GetChild(5).GetChild(3).gameObject.SetActive(false);
         }
         if (PlayerPrefs.GetInt("G6", 0) == 1)
         {
-            Content.transform.GetChild(6).GetChild(1).gameObject.SetActive(true);
-            Content.transform.GetChild(6).GetChild(2).gameObject.SetActive(true);
-            Content.transform.GetChild(6).GetChild(3).gameObject.SetActive(false);
+            SciFiContent.transform.GetChild(6).GetChild(1).gameObject.SetActive(true);
+            SciFiContent.transform.GetChild(6).GetChild(2).gameObject.SetActive(true);
+            SciFiContent.transform.GetChild(6).GetChild(3).gameObject.SetActive(false);
+        }
+        if (PlayerPrefs.GetInt("G12", 0) == 1)
+        {
+            ClassicContent.transform.GetChild(12).GetChild(1).gameObject.SetActive(true);
+            ClassicContent.transform.GetChild(12).GetChild(2).gameObject.SetActive(true);
+            ClassicContent.transform.GetChild(12).GetChild(3).gameObject.SetActive(false);
         }
         if (PlayerPrefs.GetInt("G14", 0) == 1)
         {
-            Content.transform.GetChild(14).GetChild(1).gameObject.SetActive(true);
-            Content.transform.GetChild(14).GetChild(2).gameObject.SetActive(true);
-            Content.transform.GetChild(14).GetChild(3).gameObject.SetActive(false);
+            ClassicContent.transform.GetChild(14).GetChild(1).gameObject.SetActive(true);
+            ClassicContent.transform.GetChild(14).GetChild(2).gameObject.SetActive(true);
+            ClassicContent.transform.GetChild(14).GetChild(3).gameObject.SetActive(false);
         }
         if (PlayerPrefs.GetInt("G17", 0) == 1)
         {
-            Content.transform.GetChild(17).GetChild(1).gameObject.SetActive(true);
-            Content.transform.GetChild(17).GetChild(2).gameObject.SetActive(true);
-            Content.transform.GetChild(17).GetChild(3).gameObject.SetActive(false);
+            ClassicContent.transform.GetChild(17).GetChild(1).gameObject.SetActive(true);
+            ClassicContent.transform.GetChild(17).GetChild(2).gameObject.SetActive(true);
+            ClassicContent.transform.GetChild(17).GetChild(3).gameObject.SetActive(false);
         }
         if (PlayerPrefs.GetInt("G23", 0) == 1)
         {
-            Content.transform.GetChild(23).GetChild(1).gameObject.SetActive(true);
-            Content.transform.GetChild(23).GetChild(2).gameObject.SetActive(true);
-            Content.transform.GetChild(23).GetChild(3).gameObject.SetActive(false);
+            ClassicContent.transform.GetChild(23).GetChild(1).gameObject.SetActive(true);
+            ClassicContent.transform.GetChild(23).GetChild(2).gameObject.SetActive(true);
+            ClassicContent.transform.GetChild(23).GetChild(3).gameObject.SetActive(false);
         }
         if (PlayerPrefs.GetInt("G27", 0) == 1)
         {
-            Content.transform.GetChild(27).GetChild(1).gameObject.SetActive(true);
-            Content.transform.GetChild(27).GetChild(2).gameObject.SetActive(true);
-            Content.transform.GetChild(27).GetChild(3).gameObject.SetActive(false);
+            ClassicContent.transform.GetChild(27).GetChild(1).gameObject.SetActive(true);
+            ClassicContent.transform.GetChild(27).GetChild(2).gameObject.SetActive(true);
+            ClassicContent.transform.GetChild(27).GetChild(3).gameObject.SetActive(false);
         }
         if (PlayerPrefs.GetInt("G29", 0) == 1)
         {
-            Content.transform.GetChild(29).GetChild(1).gameObject.SetActive(true);
-            Content.transform.GetChild(29).GetChild(2).gameObject.SetActive(true);
-            Content.transform.GetChild(29).GetChild(3).gameObject.SetActive(false);
+            ClassicContent.transform.GetChild(29).GetChild(1).gameObject.SetActive(true);
+            ClassicContent.transform.GetChild(29).GetChild(2).gameObject.SetActive(true);
+            ClassicContent.transform.GetChild(29).GetChild(3).gameObject.SetActive(false);
         }
     }
 
@@ -205,8 +216,10 @@ public class GameManager : MonoBehaviour
     }
     private IEnumerator BlinkTorch()
     {
+        BG.SetActive(true);
         //TurnOn();
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
+        BG.SetActive(false);
         //TurnOff();
     }
 
@@ -234,8 +247,10 @@ public class GameManager : MonoBehaviour
         {
             if(isHold )
             {
+                
                 if(single)
                 {
+                   
                     if (Time.time > coolTime && amo > 0)
                     {
                         if (PlayerPrefs.GetInt("Sound", 0) == 0)
@@ -260,6 +275,7 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
+                    BG.SetActive(true);
                     //Auto
                     if (Time.time > coolTime && amo > 0)
                     {
@@ -284,6 +300,7 @@ public class GameManager : MonoBehaviour
                 }
                 
             }
+            
         }
         if (Shake.isOn)
         {
@@ -418,19 +435,31 @@ public class GameManager : MonoBehaviour
     }
     public void OnPointerUp()
     {
+        BG.SetActive(false);
         isHold = false;
     }
     public void Reload()
     {
         if(amo<=0)
         {
-            amo = r;
-            currentModel.GetComponent<Animator>().Play("Reload");
-            reloadCount++;
-            if(reloadCount%3==0)
+            // if (reloadCount % 3 == 0)
+            // {
+            if (AdManager_Admob.instance.IsInterstitialAdLoaded())
             {
                 AdManager_Admob.instance.ShowInterstitialAd();
+                amo = r;
+                currentModel.GetComponent<Animator>().Play("Reload");
+                reloadCount++;
             }
+            else
+            {
+                amo = r;
+                currentModel.GetComponent<Animator>().Play("Reload");
+                reloadCount++;
+            }
+          //  }
+           
+           
         }   
     }
     public void G0()
