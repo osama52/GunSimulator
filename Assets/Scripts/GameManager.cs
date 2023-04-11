@@ -20,13 +20,16 @@ public class GameManager : MonoBehaviour
     public GameObject StartPanel;
     public GameObject ClassicCollection;
     public GameObject SciFiCollection;
-    public GameObject BG;
+    public GameObject TeaserCollection;
+    public Slider energy;
+    //public GameObject BG;
     public Text amoText;
     public Toggle Hide;
     public Toggle Hold;
     public Toggle Single;
     public Toggle Shake;
     public float shakeThreshold = 2f;
+
     Vector3 lastAcceleration;
     bool isShaking;
     bool hasShaken;
@@ -34,8 +37,8 @@ public class GameManager : MonoBehaviour
     float coolTime;
     bool single;
 
-    int amo = 10;
-    int r;
+    float amo = 10;
+    float r;
 
     bool sound = true;
     bool vibrate = true;
@@ -49,6 +52,7 @@ public class GameManager : MonoBehaviour
         StartPanel.SetActive(false);
         ClassicCollection.SetActive(true);
         SciFiCollection.SetActive(false);
+        TeaserCollection.SetActive(false);
         Content = ClassicContent;
     }
     public void OpenSciFi()
@@ -56,7 +60,16 @@ public class GameManager : MonoBehaviour
         StartPanel.SetActive(false);
         ClassicCollection.SetActive(false);
         SciFiCollection.SetActive(true);
+        TeaserCollection.SetActive(false);
         Content= SciFiContent;
+    }
+    public void OpenTeaser()
+    {
+        StartPanel.SetActive(false);
+        ClassicCollection.SetActive(false);
+        SciFiCollection.SetActive(false);
+        TeaserCollection.SetActive(true);
+        Content = TeaserCollection;
     }
     public void Home()
     {
@@ -216,10 +229,10 @@ public class GameManager : MonoBehaviour
     }
     private IEnumerator BlinkTorch()
     {
-        BG.SetActive(true);
+        //BG.SetActive(true);
         TurnOn();
         yield return new WaitForSeconds(0.1f);
-        BG.SetActive(false);
+        //BG.SetActive(false);
         TurnOff();
     }
 
@@ -233,6 +246,7 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        energy.value = amo / r;
 
         if(amo<=0)
         {
@@ -275,7 +289,7 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
-                    BG.SetActive(true);
+                    //BG.SetActive(true);
                     //Auto
                     if (Time.time > coolTime && amo > 0)
                     {
@@ -294,7 +308,7 @@ public class GameManager : MonoBehaviour
                         currentModel.transform.GetChild(0).GetComponent<ParticleSystem>().Stop();
                         currentModel.transform.GetChild(0).GetComponent<ParticleSystem>().Play();
                         currentModel.GetComponent<Animator>().Play("AutoShoot");
-                        coolTime = Time.time + 0.1f;
+                        coolTime = Time.time + 0.15f;
                         amo--;
                     }
                 }
@@ -380,6 +394,12 @@ public class GameManager : MonoBehaviour
     }
     public void OpenCollectionPanel()
     {
+        gunDisplayPanel.transform.GetChild(3).gameObject.SetActive(true);
+        gunDisplayPanel.transform.GetChild(4).gameObject.SetActive(true);
+        gunDisplayPanel.transform.GetChild(5).gameObject.SetActive(true);
+        gunDisplayPanel.transform.GetChild(7).gameObject.SetActive(true);
+        gunDisplayPanel.transform.GetChild(8).gameObject.SetActive(true);
+        gunDisplayPanel.transform.GetChild(10).gameObject.SetActive(false);
         collectionPanel.SetActive(true);
         Destroy(currentModel);
     }
@@ -435,7 +455,7 @@ public class GameManager : MonoBehaviour
     }
     public void OnPointerUp()
     {
-        BG.SetActive(false);
+        //BG.SetActive(false);
         isHold = false;
     }
     public void Reload()
@@ -891,5 +911,101 @@ public class GameManager : MonoBehaviour
             Content.transform.GetChild(29).GetChild(3).gameObject.SetActive(false);
             PlayerPrefs.SetInt("G29", 1);
         }
+    }
+    public void G30()
+    {
+        currentModel = Instantiate(GunModels[30]);
+        currentModel.transform.position = new Vector3(0f, -0.3f, 0f);
+        currentModel.transform.rotation = Quaternion.Euler(0, 180, 90);
+        currentModel.transform.localScale = Vector3.one * 8f;
+        single = false;
+        collectionPanel.SetActive(false);
+        r = 25;
+        amo = r;
+        Hold.isOn = true;
+
+        gunDisplayPanel.transform.GetChild(3).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(4).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(5).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(7).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(8).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(10).gameObject.SetActive(true);
+    }
+    public void G31()
+    {
+        currentModel = Instantiate(GunModels[31]);
+        currentModel.transform.position = new Vector3(-1f,0f, 0f);
+        currentModel.transform.rotation = Quaternion.Euler(0, 180, 90);
+        currentModel.transform.localScale = Vector3.one * 1f;
+        single = false;
+        collectionPanel.SetActive(false);
+        r = 25;
+        amo = r;
+        Hold.isOn = true;
+
+        gunDisplayPanel.transform.GetChild(3).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(4).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(5).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(7).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(8).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(10).gameObject.SetActive(true);
+    }
+    public void G32()
+    {
+        currentModel = Instantiate(GunModels[32]);
+        currentModel.transform.position = new Vector3(-0.1f, 0.2f, 0f);
+        currentModel.transform.rotation = Quaternion.Euler(0, 180, 90);
+        currentModel.transform.localScale = Vector3.one * 1f;
+        single = false;
+        collectionPanel.SetActive(false);
+        r = 25;
+        amo = r;
+        Hold.isOn = true;
+
+        gunDisplayPanel.transform.GetChild(3).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(4).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(5).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(7).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(8).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(10).gameObject.SetActive(true);
+
+    }
+    public void G33()
+    {
+        currentModel = Instantiate(GunModels[33]);
+        currentModel.transform.position = new Vector3(-0.1f, 0.2f, 0f);
+        currentModel.transform.rotation = Quaternion.Euler(0, 180, 90);
+        currentModel.transform.localScale = Vector3.one * 1f;
+        single = false;
+        collectionPanel.SetActive(false);
+        r = 25;
+        amo = r;
+        Hold.isOn = true;
+
+        gunDisplayPanel.transform.GetChild(3).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(4).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(5).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(7).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(8).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(10).gameObject.SetActive(true);
+    }
+    public void G34()
+    {
+        currentModel = Instantiate(GunModels[34]);
+        currentModel.transform.position = new Vector3(-0.1f, 0.2f, 0f);
+        currentModel.transform.rotation = Quaternion.Euler(0, 180, 90);
+        currentModel.transform.localScale = Vector3.one * 1f;
+        single = false;
+        collectionPanel.SetActive(false);
+        r = 25;
+        amo = r;
+        Hold.isOn = true;
+
+        gunDisplayPanel.transform.GetChild(3).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(4).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(5).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(7).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(8).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(10).gameObject.SetActive(true);
     }
 }
