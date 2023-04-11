@@ -217,10 +217,10 @@ public class GameManager : MonoBehaviour
     private IEnumerator BlinkTorch()
     {
         BG.SetActive(true);
-        //TurnOn();
+        TurnOn();
         yield return new WaitForSeconds(0.1f);
         BG.SetActive(false);
-        //TurnOff();
+        TurnOff();
     }
 
     public void openSettings()
