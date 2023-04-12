@@ -1015,4 +1015,23 @@ public class GameManager : MonoBehaviour
         gunDisplayPanel.transform.GetChild(8).gameObject.SetActive(false);
         gunDisplayPanel.transform.GetChild(10).gameObject.SetActive(true);
     }
+    public void G35()
+    {
+        currentModel = Instantiate(GunModels[35]);
+        currentModel.transform.position = new Vector3(-0.1f, 0.2f, 0f);
+        currentModel.transform.rotation = Quaternion.Euler(0, 180, 90);
+        currentModel.transform.localScale = Vector3.one * 1f;
+        single = false;
+        collectionPanel.SetActive(false);
+        r = 25;
+        amo = r;
+        Hold.isOn = true;
+
+        gunDisplayPanel.transform.GetChild(3).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(4).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(5).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(7).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(8).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(10).gameObject.SetActive(true);
+    }
 }
