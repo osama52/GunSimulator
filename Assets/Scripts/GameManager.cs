@@ -1018,7 +1018,7 @@ public class GameManager : MonoBehaviour
     public void G35()
     {
         currentModel = Instantiate(GunModels[35]);
-        currentModel.transform.position = new Vector3(-0.1f, 0.2f, 0f);
+        currentModel.transform.position = new Vector3(0f, 0.2f, 0f);
         currentModel.transform.rotation = Quaternion.Euler(0, 180, 90);
         currentModel.transform.localScale = Vector3.one * 1f;
         single = false;
