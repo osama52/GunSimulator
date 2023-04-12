@@ -874,10 +874,13 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Content.transform.GetChild(27).GetChild(1).gameObject.SetActive(true);
-            Content.transform.GetChild(27).GetChild(2).gameObject.SetActive(true);
-            Content.transform.GetChild(27).GetChild(3).gameObject.SetActive(false);
-            PlayerPrefs.SetInt("G27", 1);
+            AdManager_Admob.instance.ShowRewardedVideoAd(() =>
+            {
+                Content.transform.GetChild(27).GetChild(1).gameObject.SetActive(true);
+                Content.transform.GetChild(27).GetChild(2).gameObject.SetActive(true);
+                Content.transform.GetChild(27).GetChild(3).gameObject.SetActive(false);
+                PlayerPrefs.SetInt("G27", 1);
+            });
         }
     }
     public void G28()
@@ -906,10 +909,14 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Content.transform.GetChild(29).GetChild(1).gameObject.SetActive(true);
-            Content.transform.GetChild(29).GetChild(2).gameObject.SetActive(true);
-            Content.transform.GetChild(29).GetChild(3).gameObject.SetActive(false);
-            PlayerPrefs.SetInt("G29", 1);
+            AdManager_Admob.instance.LoadRewardedVideoAd();
+            AdManager_Admob.instance.ShowRewardedVideoAd(() =>
+            {
+                Content.transform.GetChild(29).GetChild(1).gameObject.SetActive(true);
+                Content.transform.GetChild(29).GetChild(2).gameObject.SetActive(true);
+                Content.transform.GetChild(29).GetChild(3).gameObject.SetActive(false);
+                PlayerPrefs.SetInt("G29", 1);
+            });
         }
     }
     public void G30()
