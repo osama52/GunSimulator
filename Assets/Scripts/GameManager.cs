@@ -1027,7 +1027,7 @@ public class GameManager : MonoBehaviour
         if (PlayerPrefs.GetInt("G36", 0) == 1)
         {
             currentModel = Instantiate(GunModels[36]);
-            currentModel.transform.position = new Vector3(0f, 0f, 0f);
+            currentModel.transform.position = new Vector3(0f, -0.45f, 0f);
             currentModel.transform.rotation = Quaternion.Euler(0, 180, 90);
             currentModel.transform.localScale = Vector3.one * 1f;
             single = false;
@@ -1057,7 +1057,7 @@ public class GameManager : MonoBehaviour
     {
 
         currentModel = Instantiate(GunModels[37]);
-        currentModel.transform.position = new Vector3(0f, 0f, 0f);
+        currentModel.transform.position = new Vector3(0f, 0.4f, 0f);
         currentModel.transform.rotation = Quaternion.Euler(0, 180, 90);
         currentModel.transform.localScale = Vector3.one * 1f;
         single = false;
