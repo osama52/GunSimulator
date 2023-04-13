@@ -896,7 +896,7 @@ public class GameManager : MonoBehaviour
     }
     public void G29()
     {
-        if (PlayerPrefs.GetInt("G27", 0) == 1)
+        if (PlayerPrefs.GetInt("G29", 0) == 1)
         {
             currentModel = Instantiate(GunModels[29]);
             currentModel.transform.position = new Vector3(-0.2f, -1.5f, 0f);
