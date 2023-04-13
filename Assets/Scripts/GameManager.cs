@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject Content;
     public GameObject ClassicContent;
     public GameObject SciFiContent;
+    public GameObject TaserContent;
     public GameObject ReloadBtn;
     public GameObject StartPanel;
     public GameObject ClassicCollection;
@@ -69,7 +70,7 @@ public class GameManager : MonoBehaviour
         ClassicCollection.SetActive(false);
         SciFiCollection.SetActive(false);
         TeaserCollection.SetActive(true);
-        Content = TeaserCollection;
+        Content = TaserContent;
     }
     public void Home()
     {
@@ -163,51 +164,43 @@ public class GameManager : MonoBehaviour
 
         if (PlayerPrefs.GetInt("G5", 0) == 1)
         {
-            SciFiContent.transform.GetChild(5).GetChild(1).gameObject.SetActive(true);
-            SciFiContent.transform.GetChild(5).GetChild(2).gameObject.SetActive(true);
             SciFiContent.transform.GetChild(5).GetChild(3).gameObject.SetActive(false);
         }
         if (PlayerPrefs.GetInt("G6", 0) == 1)
         {
-            SciFiContent.transform.GetChild(6).GetChild(1).gameObject.SetActive(true);
-            SciFiContent.transform.GetChild(6).GetChild(2).gameObject.SetActive(true);
             SciFiContent.transform.GetChild(6).GetChild(3).gameObject.SetActive(false);
         }
         if (PlayerPrefs.GetInt("G12", 0) == 1)
         {
-            ClassicContent.transform.GetChild(12).GetChild(1).gameObject.SetActive(true);
-            ClassicContent.transform.GetChild(12).GetChild(2).gameObject.SetActive(true);
             ClassicContent.transform.GetChild(12).GetChild(3).gameObject.SetActive(false);
         }
         if (PlayerPrefs.GetInt("G14", 0) == 1)
         {
-            ClassicContent.transform.GetChild(14).GetChild(1).gameObject.SetActive(true);
-            ClassicContent.transform.GetChild(14).GetChild(2).gameObject.SetActive(true);
             ClassicContent.transform.GetChild(14).GetChild(3).gameObject.SetActive(false);
         }
         if (PlayerPrefs.GetInt("G17", 0) == 1)
         {
-            ClassicContent.transform.GetChild(17).GetChild(1).gameObject.SetActive(true);
-            ClassicContent.transform.GetChild(17).GetChild(2).gameObject.SetActive(true);
             ClassicContent.transform.GetChild(17).GetChild(3).gameObject.SetActive(false);
         }
         if (PlayerPrefs.GetInt("G23", 0) == 1)
         {
-            ClassicContent.transform.GetChild(23).GetChild(1).gameObject.SetActive(true);
-            ClassicContent.transform.GetChild(23).GetChild(2).gameObject.SetActive(true);
             ClassicContent.transform.GetChild(23).GetChild(3).gameObject.SetActive(false);
         }
         if (PlayerPrefs.GetInt("G27", 0) == 1)
         {
-            ClassicContent.transform.GetChild(27).GetChild(1).gameObject.SetActive(true);
-            ClassicContent.transform.GetChild(27).GetChild(2).gameObject.SetActive(true);
             ClassicContent.transform.GetChild(27).GetChild(3).gameObject.SetActive(false);
         }
         if (PlayerPrefs.GetInt("G29", 0) == 1)
         {
-            ClassicContent.transform.GetChild(29).GetChild(1).gameObject.SetActive(true);
-            ClassicContent.transform.GetChild(29).GetChild(2).gameObject.SetActive(true);
             ClassicContent.transform.GetChild(29).GetChild(3).gameObject.SetActive(false);
+        }
+        if (PlayerPrefs.GetInt("G31", 0) == 1)
+        {
+            TaserContent.transform.GetChild(31).GetChild(3).gameObject.SetActive(false);
+        }
+        if (PlayerPrefs.GetInt("G36", 0) == 1)
+        {
+            TaserContent.transform.GetChild(36).GetChild(3).gameObject.SetActive(false);
         }
     }
 
@@ -554,8 +547,6 @@ public class GameManager : MonoBehaviour
         {
             AdManager_Admob.instance.ShowRewardedVideoAd (() =>
             {
-                Content.transform.GetChild(5).GetChild(1).gameObject.SetActive(true);
-                Content.transform.GetChild(5).GetChild(2).gameObject.SetActive(true);
                 Content.transform.GetChild(5).GetChild(3).gameObject.SetActive(false);
                 PlayerPrefs.SetInt("G5", 1);
             });
@@ -579,8 +570,6 @@ public class GameManager : MonoBehaviour
         {
             AdManager_Admob.instance.ShowRewardedVideoAd(() =>
             {
-                Content.transform.GetChild(6).GetChild(1).gameObject.SetActive(true);
-                Content.transform.GetChild(6).GetChild(2).gameObject.SetActive(true);
                 Content.transform.GetChild(6).GetChild(3).gameObject.SetActive(false);
                 PlayerPrefs.SetInt("G6", 1);
             });
@@ -659,8 +648,6 @@ public class GameManager : MonoBehaviour
         {
             AdManager_Admob.instance.ShowRewardedVideoAd(() =>
             {
-                Content.transform.GetChild(12).GetChild(1).gameObject.SetActive(true);
-                Content.transform.GetChild(12).GetChild(2).gameObject.SetActive(true);
                 Content.transform.GetChild(12).GetChild(3).gameObject.SetActive(false);
                 PlayerPrefs.SetInt("G12", 1);
             });
@@ -694,8 +681,6 @@ public class GameManager : MonoBehaviour
         {
             AdManager_Admob.instance.ShowRewardedVideoAd(() =>
             {
-                Content.transform.GetChild(14).GetChild(1).gameObject.SetActive(true);
-                Content.transform.GetChild(14).GetChild(2).gameObject.SetActive(true);
                 Content.transform.GetChild(14).GetChild(3).gameObject.SetActive(false);
                 PlayerPrefs.SetInt("G14", 1);
             });
@@ -740,8 +725,6 @@ public class GameManager : MonoBehaviour
         {
             AdManager_Admob.instance.ShowRewardedVideoAd(() =>
             {
-                Content.transform.GetChild(17).GetChild(1).gameObject.SetActive(true);
-                Content.transform.GetChild(17).GetChild(2).gameObject.SetActive(true);
                 Content.transform.GetChild(17).GetChild(3).gameObject.SetActive(false);
                 PlayerPrefs.SetInt("G17", 1);
             });
@@ -819,8 +802,6 @@ public class GameManager : MonoBehaviour
         {
             AdManager_Admob.instance.ShowRewardedVideoAd(() =>
             {
-                Content.transform.GetChild(23).GetChild(1).gameObject.SetActive(true);
-                Content.transform.GetChild(23).GetChild(2).gameObject.SetActive(true);
                 Content.transform.GetChild(23).GetChild(3).gameObject.SetActive(false);
                 PlayerPrefs.SetInt("G23", 1);
             });
@@ -876,8 +857,6 @@ public class GameManager : MonoBehaviour
         {
             AdManager_Admob.instance.ShowRewardedVideoAd(() =>
             {
-                Content.transform.GetChild(27).GetChild(1).gameObject.SetActive(true);
-                Content.transform.GetChild(27).GetChild(2).gameObject.SetActive(true);
                 Content.transform.GetChild(27).GetChild(3).gameObject.SetActive(false);
                 PlayerPrefs.SetInt("G27", 1);
             });
@@ -909,11 +888,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            AdManager_Admob.instance.LoadRewardedVideoAd();
             AdManager_Admob.instance.ShowRewardedVideoAd(() =>
             {
-                Content.transform.GetChild(29).GetChild(1).gameObject.SetActive(true);
-                Content.transform.GetChild(29).GetChild(2).gameObject.SetActive(true);
                 Content.transform.GetChild(29).GetChild(3).gameObject.SetActive(false);
                 PlayerPrefs.SetInt("G29", 1);
             });
@@ -940,22 +916,33 @@ public class GameManager : MonoBehaviour
     }
     public void G31()
     {
-        currentModel = Instantiate(GunModels[31]);
-        currentModel.transform.position = new Vector3(-1f,0f, 0f);
-        currentModel.transform.rotation = Quaternion.Euler(0, 180, 90);
-        currentModel.transform.localScale = Vector3.one * 1f;
-        single = false;
-        collectionPanel.SetActive(false);
-        r = 25;
-        amo = r;
-        Hold.isOn = true;
+        if (PlayerPrefs.GetInt("G31", 0) == 1)
+        {
+            currentModel = Instantiate(GunModels[31]);
+            currentModel.transform.position = new Vector3(-1f, 0f, 0f);
+            currentModel.transform.rotation = Quaternion.Euler(0, 180, 90);
+            currentModel.transform.localScale = Vector3.one * 1f;
+            single = false;
+            collectionPanel.SetActive(false);
+            r = 25;
+            amo = r;
+            Hold.isOn = true;
 
-        gunDisplayPanel.transform.GetChild(3).gameObject.SetActive(false);
-        gunDisplayPanel.transform.GetChild(4).gameObject.SetActive(false);
-        gunDisplayPanel.transform.GetChild(5).gameObject.SetActive(false);
-        gunDisplayPanel.transform.GetChild(7).gameObject.SetActive(false);
-        gunDisplayPanel.transform.GetChild(8).gameObject.SetActive(false);
-        gunDisplayPanel.transform.GetChild(10).gameObject.SetActive(true);
+            gunDisplayPanel.transform.GetChild(3).gameObject.SetActive(false);
+            gunDisplayPanel.transform.GetChild(4).gameObject.SetActive(false);
+            gunDisplayPanel.transform.GetChild(5).gameObject.SetActive(false);
+            gunDisplayPanel.transform.GetChild(7).gameObject.SetActive(false);
+            gunDisplayPanel.transform.GetChild(8).gameObject.SetActive(false);
+            gunDisplayPanel.transform.GetChild(10).gameObject.SetActive(true);
+        }
+        else
+        {
+            AdManager_Admob.instance.ShowRewardedVideoAd(() =>
+            {
+                Content.transform.GetChild(31).GetChild(3).gameObject.SetActive(false);
+                PlayerPrefs.SetInt("G31", 1);
+            });
+        }
     }
     public void G32()
     {
@@ -1019,6 +1006,58 @@ public class GameManager : MonoBehaviour
     {
         currentModel = Instantiate(GunModels[35]);
         currentModel.transform.position = new Vector3(0f, 0.2f, 0f);
+        currentModel.transform.rotation = Quaternion.Euler(0, 180, 90);
+        currentModel.transform.localScale = Vector3.one * 1f;
+        single = false;
+        collectionPanel.SetActive(false);
+        r = 25;
+        amo = r;
+        Hold.isOn = true;
+
+        gunDisplayPanel.transform.GetChild(3).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(4).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(5).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(7).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(8).gameObject.SetActive(false);
+        gunDisplayPanel.transform.GetChild(10).gameObject.SetActive(true);
+    }
+
+    public void G36()
+    {
+        if (PlayerPrefs.GetInt("G36", 0) == 1)
+        {
+            currentModel = Instantiate(GunModels[36]);
+            currentModel.transform.position = new Vector3(0f, 0f, 0f);
+            currentModel.transform.rotation = Quaternion.Euler(0, 180, 90);
+            currentModel.transform.localScale = Vector3.one * 1f;
+            single = false;
+            collectionPanel.SetActive(false);
+            r = 25;
+            amo = r;
+            Hold.isOn = true;
+
+            gunDisplayPanel.transform.GetChild(3).gameObject.SetActive(false);
+            gunDisplayPanel.transform.GetChild(4).gameObject.SetActive(false);
+            gunDisplayPanel.transform.GetChild(5).gameObject.SetActive(false);
+            gunDisplayPanel.transform.GetChild(7).gameObject.SetActive(false);
+            gunDisplayPanel.transform.GetChild(8).gameObject.SetActive(false);
+            gunDisplayPanel.transform.GetChild(10).gameObject.SetActive(true);
+        }
+        else
+        {
+            print(Content.transform.GetChild(36).GetChild(3).name);
+            AdManager_Admob.instance.ShowRewardedVideoAd(() =>
+            {
+                Content.transform.GetChild(36).GetChild(3).gameObject.SetActive(false);
+                PlayerPrefs.SetInt("G36", 1);
+            });
+        }
+    }
+    public void G37()
+    {
+
+        currentModel = Instantiate(GunModels[37]);
+        currentModel.transform.position = new Vector3(0f, 0f, 0f);
         currentModel.transform.rotation = Quaternion.Euler(0, 180, 90);
         currentModel.transform.localScale = Vector3.one * 1f;
         single = false;
