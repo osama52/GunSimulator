@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
 
     public void OpenClassic()
     {
-        
+        AdManager_Admob.instance.ShowInterstitialAd();
         StartPanel.SetActive(false);
         ClassicCollection.SetActive(true);
         SciFiCollection.SetActive(false);
@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
     }
     public void OpenSciFi()
     {
+        AdManager_Admob.instance.ShowInterstitialAd();
         StartPanel.SetActive(false);
         ClassicCollection.SetActive(false);
         SciFiCollection.SetActive(true);
@@ -67,6 +68,7 @@ public class GameManager : MonoBehaviour
     }
     public void OpenTeaser()
     {
+        AdManager_Admob.instance.ShowInterstitialAd();
         StartPanel.SetActive(false);
         ClassicCollection.SetActive(false);
         SciFiCollection.SetActive(false);
@@ -75,9 +77,7 @@ public class GameManager : MonoBehaviour
     }
     public void Home()
     {
-        print("show ad 0");
         AdManager_Admob.instance.ShowInterstitialAd();
-        print("show ad 100");
         StartPanel.SetActive(true);
     }
     public void Sound()
