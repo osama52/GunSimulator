@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
 
     public void OpenClassic()
     {
+        
         StartPanel.SetActive(false);
         ClassicCollection.SetActive(true);
         SciFiCollection.SetActive(false);
@@ -74,6 +75,9 @@ public class GameManager : MonoBehaviour
     }
     public void Home()
     {
+        print("show ad 0");
+        AdManager_Admob.instance.ShowInterstitialAd();
+        print("show ad 100");
         StartPanel.SetActive(true);
     }
     public void Sound()
@@ -126,6 +130,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        //AdManager_Admob.instance.ShowInterstitialAd();
         javaObject = new AndroidJavaClass("com.myflashlight.flashlightlib.Flashlight");
 
 
@@ -457,19 +462,20 @@ public class GameManager : MonoBehaviour
         {
             // if (reloadCount % 3 == 0)
             // {
-            if (AdManager_Admob.instance.IsInterstitialAdLoaded())
-            {
+           // if(AdManager_Admob.instance.IsInterstitialAdLoaded())
+          //  {
                 AdManager_Admob.instance.ShowInterstitialAd();
                 amo = r;
                 currentModel.GetComponent<Animator>().Play("Reload");
                 reloadCount++;
-            }
-            else
-            {
-                amo = r;
-                currentModel.GetComponent<Animator>().Play("Reload");
-                reloadCount++;
-            }
+            //}
+            //else
+            //{
+            //    AdManager_Admob.instance.ShowInterstitialAd();
+            //    amo = r;
+            //    currentModel.GetComponent<Animator>().Play("Reload");
+            //}
+                
           //  }
            
            
