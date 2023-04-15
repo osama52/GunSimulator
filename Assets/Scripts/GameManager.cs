@@ -48,9 +48,94 @@ public class GameManager : MonoBehaviour
 
     int reloadCount;
 
+
+    void Start()
+    {
+        Invoke(nameof(DisplayBanner), 5f);
+
+
+        javaObject = new AndroidJavaClass("com.myflashlight.flashlightlib.Flashlight");
+
+
+        if (PlayerPrefs.GetInt("Sound", 0) == 0)
+        {
+            settingPanel.transform.GetChild(0).transform.GetChild(1).gameObject.SetActive(false);
+            sound = true;
+        }
+        else
+        {
+            settingPanel.transform.GetChild(0).transform.GetChild(1).gameObject.SetActive(true);
+            sound = false;
+        }
+
+        if (PlayerPrefs.GetInt("Vibrate", 0) == 0)
+        {
+            settingPanel.transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(false);
+            vibrate = true;
+        }
+        else
+        {
+            settingPanel.transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(true);
+            vibrate = false;
+        }
+
+        if (PlayerPrefs.GetInt("Flash", 0) == 0)
+        {
+            settingPanel.transform.GetChild(2).transform.GetChild(1).gameObject.SetActive(false);
+            flash = true;
+        }
+        else
+        {
+            settingPanel.transform.GetChild(2).transform.GetChild(1).gameObject.SetActive(true);
+            flash = false;
+        }
+
+        if (PlayerPrefs.GetInt("G5", 0) == 1)
+        {
+            SciFiContent.transform.GetChild(5).GetChild(3).gameObject.SetActive(false);
+        }
+        if (PlayerPrefs.GetInt("G6", 0) == 1)
+        {
+            SciFiContent.transform.GetChild(6).GetChild(3).gameObject.SetActive(false);
+        }
+        if (PlayerPrefs.GetInt("G12", 0) == 1)
+        {
+            ClassicContent.transform.GetChild(12).GetChild(3).gameObject.SetActive(false);
+        }
+        if (PlayerPrefs.GetInt("G14", 0) == 1)
+        {
+            ClassicContent.transform.GetChild(14).GetChild(3).gameObject.SetActive(false);
+        }
+        if (PlayerPrefs.GetInt("G17", 0) == 1)
+        {
+            ClassicContent.transform.GetChild(17).GetChild(3).gameObject.SetActive(false);
+        }
+        if (PlayerPrefs.GetInt("G23", 0) == 1)
+        {
+            ClassicContent.transform.GetChild(23).GetChild(3).gameObject.SetActive(false);
+        }
+        if (PlayerPrefs.GetInt("G27", 0) == 1)
+        {
+            ClassicContent.transform.GetChild(27).GetChild(3).gameObject.SetActive(false);
+        }
+        if (PlayerPrefs.GetInt("G29", 0) == 1)
+        {
+            ClassicContent.transform.GetChild(29).GetChild(3).gameObject.SetActive(false);
+        }
+        if (PlayerPrefs.GetInt("G31", 0) == 1)
+        {
+            TaserContent.transform.GetChild(31).GetChild(3).gameObject.SetActive(false);
+        }
+        if (PlayerPrefs.GetInt("G36", 0) == 1)
+        {
+            TaserContent.transform.GetChild(36).GetChild(3).gameObject.SetActive(false);
+        }
+    }
+
     public void OpenClassic()
     {
-        AdManager_Admob.instance.ShowInterstitialAd();
+        //AdManager_Admob.instance.ShowInterstitialAd();
+        ApplovinMediationTecshield.instance.ShowInterstitial();
         StartPanel.SetActive(false);
         ClassicCollection.SetActive(true);
         SciFiCollection.SetActive(false);
@@ -59,7 +144,8 @@ public class GameManager : MonoBehaviour
     }
     public void OpenSciFi()
     {
-        AdManager_Admob.instance.ShowInterstitialAd();
+        //AdManager_Admob.instance.ShowInterstitialAd();
+        ApplovinMediationTecshield.instance.ShowInterstitial();
         StartPanel.SetActive(false);
         ClassicCollection.SetActive(false);
         SciFiCollection.SetActive(true);
@@ -68,7 +154,8 @@ public class GameManager : MonoBehaviour
     }
     public void OpenTeaser()
     {
-        AdManager_Admob.instance.ShowInterstitialAd();
+        //AdManager_Admob.instance.ShowInterstitialAd();
+        ApplovinMediationTecshield.instance.ShowInterstitial();
         StartPanel.SetActive(false);
         ClassicCollection.SetActive(false);
         SciFiCollection.SetActive(false);
@@ -77,7 +164,8 @@ public class GameManager : MonoBehaviour
     }
     public void Home()
     {
-        AdManager_Admob.instance.ShowInterstitialAd();
+        //AdManager_Admob.instance.ShowInterstitialAd();
+        ApplovinMediationTecshield.instance.ShowInterstitial();
         StartPanel.SetActive(true);
     }
     public void Sound()
@@ -127,88 +215,11 @@ public class GameManager : MonoBehaviour
         instance= this;
     }
     public AndroidJavaClass javaObject;
-
-    void Start()
+    void DisplayBanner()
     {
-        //AdManager_Admob.instance.ShowInterstitialAd();
-        javaObject = new AndroidJavaClass("com.myflashlight.flashlightlib.Flashlight");
-
-
-        if(PlayerPrefs.GetInt("Sound", 0)==0)
-        {
-            settingPanel.transform.GetChild(0).transform.GetChild(1).gameObject.SetActive(false);
-            sound= true;
-        }
-        else
-        {
-            settingPanel.transform.GetChild(0).transform.GetChild(1).gameObject.SetActive(true);
-            sound= false;
-        }
-
-        if (PlayerPrefs.GetInt("Vibrate", 0) == 0)
-        {
-            settingPanel.transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(false);
-            vibrate=true;
-        }
-        else
-        {
-            settingPanel.transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(true);
-            vibrate=false;
-        }
-
-        if (PlayerPrefs.GetInt("Flash", 0) == 0)
-        {
-            settingPanel.transform.GetChild(2).transform.GetChild(1).gameObject.SetActive(false);
-            flash=true;
-        }
-        else
-        {
-            settingPanel.transform.GetChild(2).transform.GetChild(1).gameObject.SetActive(true);
-            flash=false;
-        }
-
-        if (PlayerPrefs.GetInt("G5", 0) == 1)
-        {
-            SciFiContent.transform.GetChild(5).GetChild(3).gameObject.SetActive(false);
-        }
-        if (PlayerPrefs.GetInt("G6", 0) == 1)
-        {
-            SciFiContent.transform.GetChild(6).GetChild(3).gameObject.SetActive(false);
-        }
-        if (PlayerPrefs.GetInt("G12", 0) == 1)
-        {
-            ClassicContent.transform.GetChild(12).GetChild(3).gameObject.SetActive(false);
-        }
-        if (PlayerPrefs.GetInt("G14", 0) == 1)
-        {
-            ClassicContent.transform.GetChild(14).GetChild(3).gameObject.SetActive(false);
-        }
-        if (PlayerPrefs.GetInt("G17", 0) == 1)
-        {
-            ClassicContent.transform.GetChild(17).GetChild(3).gameObject.SetActive(false);
-        }
-        if (PlayerPrefs.GetInt("G23", 0) == 1)
-        {
-            ClassicContent.transform.GetChild(23).GetChild(3).gameObject.SetActive(false);
-        }
-        if (PlayerPrefs.GetInt("G27", 0) == 1)
-        {
-            ClassicContent.transform.GetChild(27).GetChild(3).gameObject.SetActive(false);
-        }
-        if (PlayerPrefs.GetInt("G29", 0) == 1)
-        {
-            ClassicContent.transform.GetChild(29).GetChild(3).gameObject.SetActive(false);
-        }
-        if (PlayerPrefs.GetInt("G31", 0) == 1)
-        {
-            TaserContent.transform.GetChild(31).GetChild(3).gameObject.SetActive(false);
-        }
-        if (PlayerPrefs.GetInt("G36", 0) == 1)
-        {
-            TaserContent.transform.GetChild(36).GetChild(3).gameObject.SetActive(false);
-        }
+        ApplovinMediationTecshield.instance.ShowBanner();
     }
-
+    
     public void TurnOn()
     {
         javaObject.CallStatic("on", GetUnityActivity());
@@ -464,8 +475,9 @@ public class GameManager : MonoBehaviour
             // {
            // if(AdManager_Admob.instance.IsInterstitialAdLoaded())
           //  {
-                AdManager_Admob.instance.ShowInterstitialAd();
-                amo = r;
+                //AdManager_Admob.instance.ShowInterstitialAd();
+            ApplovinMediationTecshield.instance.ShowInterstitial();
+            amo = r;
                 currentModel.GetComponent<Animator>().Play("Reload");
                 reloadCount++;
             //}
@@ -551,7 +563,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            AdManager_Admob.instance.ShowRewardedVideoAd (() =>
+            //AdManager_Admob.instance.ShowRewardedVideoAd (() =>
+            ApplovinMediationTecshield.instance.ShowRewardedAd(() =>
             {
                 Content.transform.GetChild(5).GetChild(3).gameObject.SetActive(false);
                 PlayerPrefs.SetInt("G5", 1);
@@ -574,7 +587,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            AdManager_Admob.instance.ShowRewardedVideoAd(() =>
+            //AdManager_Admob.instance.ShowRewardedVideoAd(() =>
+            ApplovinMediationTecshield.instance.ShowRewardedAd(() =>
             {
                 Content.transform.GetChild(6).GetChild(3).gameObject.SetActive(false);
                 PlayerPrefs.SetInt("G6", 1);
@@ -652,7 +666,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            AdManager_Admob.instance.ShowRewardedVideoAd(() =>
+            //AdManager_Admob.instance.ShowRewardedVideoAd(() =>
+            ApplovinMediationTecshield.instance.ShowRewardedAd(() =>
             {
                 Content.transform.GetChild(12).GetChild(3).gameObject.SetActive(false);
                 PlayerPrefs.SetInt("G12", 1);
@@ -685,7 +700,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            AdManager_Admob.instance.ShowRewardedVideoAd(() =>
+            //AdManager_Admob.instance.ShowRewardedVideoAd(() =>
+            ApplovinMediationTecshield.instance.ShowRewardedAd(() =>
             {
                 Content.transform.GetChild(14).GetChild(3).gameObject.SetActive(false);
                 PlayerPrefs.SetInt("G14", 1);
@@ -729,7 +745,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            AdManager_Admob.instance.ShowRewardedVideoAd(() =>
+            ApplovinMediationTecshield.instance.ShowRewardedAd(() =>
             {
                 Content.transform.GetChild(17).GetChild(3).gameObject.SetActive(false);
                 PlayerPrefs.SetInt("G17", 1);
@@ -806,7 +822,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            AdManager_Admob.instance.ShowRewardedVideoAd(() =>
+            ApplovinMediationTecshield.instance.ShowRewardedAd(() =>
             {
                 Content.transform.GetChild(23).GetChild(3).gameObject.SetActive(false);
                 PlayerPrefs.SetInt("G23", 1);
@@ -861,7 +877,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            AdManager_Admob.instance.ShowRewardedVideoAd(() =>
+            ApplovinMediationTecshield.instance.ShowRewardedAd(() =>
             {
                 Content.transform.GetChild(27).GetChild(3).gameObject.SetActive(false);
                 PlayerPrefs.SetInt("G27", 1);
@@ -894,7 +910,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            AdManager_Admob.instance.ShowRewardedVideoAd(() =>
+            ApplovinMediationTecshield.instance.ShowRewardedAd(() =>
             {
                 Content.transform.GetChild(29).GetChild(3).gameObject.SetActive(false);
                 PlayerPrefs.SetInt("G29", 1);
@@ -943,7 +959,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            AdManager_Admob.instance.ShowRewardedVideoAd(() =>
+            ApplovinMediationTecshield.instance.ShowRewardedAd(() =>
             {
                 Content.transform.GetChild(31).GetChild(3).gameObject.SetActive(false);
                 PlayerPrefs.SetInt("G31", 1);
@@ -1052,7 +1068,7 @@ public class GameManager : MonoBehaviour
         else
         {
             print(Content.transform.GetChild(36).GetChild(3).name);
-            AdManager_Admob.instance.ShowRewardedVideoAd(() =>
+            ApplovinMediationTecshield.instance.ShowRewardedAd(() =>
             {
                 Content.transform.GetChild(36).GetChild(3).gameObject.SetActive(false);
                 PlayerPrefs.SetInt("G36", 1);
